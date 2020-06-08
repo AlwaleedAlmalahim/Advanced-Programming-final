@@ -1,0 +1,63 @@
+public class Program{
+
+     static void Main(string[] args)
+            {
+                var Burger = new ZingerBurger();
+                var BeefBurger = new BeefBurger();
+            }
+
+            abstract class ThingsRequired { }
+            class RoundBread : ThingsRequired { }
+
+            class Zinger : ThingsRequired { }
+
+            class Lettuce : ThingsRequired { }
+
+            class Mayonnaise : ThingsRequired { }
+            class Beef : ThingsRequired { }
+
+            abstract class Burger
+            {
+                private List<ThingsRequired> _ingredients = new ArrayList<ThingsRequired>();
+                public Burger()
+                {
+                    CreateIngredients();
+                }
+
+                //Factory method
+                public abstract void CreateIngredients();
+
+                public List<ThingsRequired> Thingsneedtobeadded
+                {
+                    get { return _ingredients; }
+                }
+            }
+            class ZingerBurger : Burger
+            {
+                public override void CreateIngredients()
+                {
+                    Thingsneedtobeadded.Add(new RoundBread());
+                    Thingsneedtobeadded.Add(new Mayonnaise());
+                    Thingsneedtobeadded.Add(new Lettuce());
+                    Thingsneedtobeadded.Add(new Zinger());
+                    Thingsneedtobeadded.Add(new RoundBread());
+                }
+            }
+            class BeefBurger : Burger
+            {
+                public override void CreateIngredients()
+                {
+                    Thingsneedtobeadded.Add(new RoundBread());
+                    Thingsneedtobeadded.Add(new Lettuce());
+                    Thingsneedtobeadded.Add(new Beef());
+                    Thingsneedtobeadded.Add(new Lettuce());
+                    Thingsneedtobeadded.Add(new Lettuce());
+                    Thingsneedtobeadded.Add(new Mayonnaise());
+                    Thingsneedtobeadded.Add(new Beef());
+                    Thingsneedtobeadded.Add(new RoundBread());
+
+                }
+            }
+        }
+    }
+}

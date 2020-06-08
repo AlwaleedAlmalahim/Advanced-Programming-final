@@ -1,0 +1,74 @@
+public class Program{
+
+     static void Main(string[] args)
+            {
+             CallOfDuty callofduty = new CallOfDuty();
+            callofduty.NetSetUp();
+
+            PUBG pubg = new PUBG();
+            pubg.NetSetUp();
+
+            FortNite fortnite = new FortNite();
+            fortnite.NetSetUp();
+
+           Scanner sc= new Scanner(System.in);
+        }
+    }
+    abstract class GameInfo
+    {
+        public abstract void MixPlayersFromDifferentServers();
+
+        public abstract void SetUpTheServer();
+
+        public virtual void GameSt()
+        {
+            System.out.println("Starting " + GetType().Name + " Game");
+        }
+
+        // The template method
+        public void NetSetUp()
+        {
+            MixPlayersFromDifferentServers();
+            SetUpTheServer();
+            GameSt();
+        }
+    }
+    class PUBG : GameInfo
+    {
+        public override void MixPlayersFromDifferentServers()
+        {
+            System.out.println("Gathering Players for call of duty");
+        }
+
+        public override void SetUpTheServer()
+        {
+            System.out.println("Setting up the server timeout setting for 20 min");
+        }
+    }
+
+    class CallOfDuty : GameInfo
+    {
+        public override void MixPlayersFromDifferentServers()
+        {
+           System.out.println("Gathering players for PUBG.");
+        }
+
+        public override void SetUpTheServer()
+        {
+            System.out.println("Setting up the server for 20 minutes");
+        }
+    }
+
+    class FortNite : GameInfo
+    {
+        public override void MixPlayersFromDifferentServers()
+        {
+           System.out.println("Gathering players for Fortnite");
+        }
+
+        public override void SetUpTheServer()
+        {
+           System.out.println("setting up the server for 15 minutes");
+        }
+    }
+}

@@ -1,0 +1,49 @@
+public class Program{
+
+     public static void main(String []args){
+         
+        System.out.println("How do you want to travel Airplane\Bus\Train");
+        String place;
+          Scanner sc= new Scanner(System.in);
+            place=sc.nextString();
+            if(place=="Airplane"||place=="airplane")
+            {
+                plane p = new plane();
+            }
+            else if (place == "Train" || place == "train")
+            {
+                train t = new train();
+            }
+            if (place == "Bus" || place == "bus")
+            {
+                bus b = new bus();
+            }
+        }
+    }
+    class plane
+    {
+        void goingby()
+        {
+            
+            System.out.println("you are going through plane");
+            
+        }
+    }
+    class bus
+    {
+        void goingby()
+        {
+            System.out.println("you are going through bus");
+           
+        }
+    }
+    class train
+    {
+        void goingby()
+        {
+            System.out.println("you are going through train");
+            
+        }
+    }
+     }
+}

@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PlayingMethod GameMethod = new PlayingMethod();
+
+            Console.WriteLine("What Game would you like to play?");
+            var game = Console.ReadLine();
+            GameMethod.SetGame(game);
+
+            Console.WriteLine("What Gaming Technique you would like (1-2)?");
+            int values = int.Parse(Console.ReadKey().KeyChar.ToString());
+
+            switch (values)
+            {
+                case 1:
+                    GameMethod.SetGamePlayingMethod(new Outdoor());
+                    GameMethod.PlayGame();
+                    break;
+
+                case 2:
+                    GameMethod.SetGamePlayingMethod(new Indoor());
+                    GameMethod.PlayGame();
+                    break;
+
+
+                default:
+                    Console.WriteLine("Invalid Selection!");
+                    break;
+            }
+            Console.ReadKey();
+        }
+        abstract class GamePlayingMethod
+        {
+            public abstract void PlayGame(string game);
+        }
+        class Outdoor : GamePlayingMethod
+        {
+            public override void PlayGame(string game)
+            {
+                Console.WriteLine("\nPlay " + game + " Outside.");
+            }
+        }
+
+        /// <summary>
+        /// A Concrete Strategy class
+        /// </summary>
+        class Indoor: GamePlayingMethod
+        {
+            public override void PlayGame(string game)
+            {
+                Console.WriteLine("\nPlay " + game + " On Computer");
+            }
+        }
+
+        /// <summary>
+        /// A Concrete Strategy class
+        /// </summary>
+       
+        class PlayingMethod
+        {
+            private string Game;
+            private GamePlayingMethod PLayOn;
+
+            public void SetGamePlayingMethod(GamePlayingMethod PLayon)
+            {
+                this.PLayOn = PLayon;
+            }
+
+            public void SetGame(string name)
+            {
+                Game = name;
+            }
+
+            public void PlayGame()
+            {
+                PLayOn.PlayGame(Game);
+                Console.WriteLine();
+            }
+        }
+
+    }
+
+}

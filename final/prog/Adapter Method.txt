@@ -1,0 +1,45 @@
+public class Program{
+
+     interface TargetInterface
+    {
+        List<string> GetItems();
+    }
+
+
+    public class VSide
+    {
+        public List<string> GetItemsList()
+        {
+            List<string> items = new List<string>();
+            items.Add("Consoles");
+            items.Add("DVD");
+            items.Add("USB");
+            items.Add(" Instruments");
+            return items;
+        }
+    }
+
+
+    class SideDedicatedToVendor : TargetInterface
+    {
+        public List<string> GetItems()
+        {
+            VSide itemholder = new VSide();
+            return itemholder.GetItemsList();
+        }
+    }
+
+
+    class ShoppingPortalClient
+    {
+        static void Main(string[] args)
+        {
+            TargetInterface ItemCollector = new SideDedicatedToVendor();
+            foreach (string items in ItemCollector.GetItems())
+            {
+                System.out.println(items);
+            }
+            
+        }
+    }
+}

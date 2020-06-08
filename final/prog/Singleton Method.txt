@@ -1,0 +1,43 @@
+public class Program{
+
+     public static void main(String []args){
+         
+        
+          int i; ;
+           System.out.println("In which database you want to search yourself press 1 for National Database press 2 for Police Database");
+           Scanner sc= new Scanner(System.in);
+            i =sc.nextInt();
+            if (i == 1)
+            {
+                Database d = new Database();
+                Database f = new Database();
+                d.PoliceDatabase();
+                f.PoliceDatabase();
+            }
+            else if (i == 2)
+            {
+                Database d = new Database();
+                Database f = new Database();
+                d.NationalDatabse();
+                f.NationalDatabse();
+            }
+
+        }
+    }
+    class Database
+    {
+        public void PoliceDatabase()
+        {
+            System.out.println("JohnDoe");
+           System.out.println("34");
+           System.out.println("Lives Near National Park");
+
+        }
+        public void NationalDatabse()
+        {
+           System.out.println("Doe");
+            System.out.println("45");
+            System.out.println("Lives Near DC");
+        }
+    }
+}
